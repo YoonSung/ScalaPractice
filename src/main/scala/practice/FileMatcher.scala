@@ -6,13 +6,20 @@ object FileMatcher {
   private val listFiles = new File("/Users/rhyno/study/scala/ScalaPractice/src/main/resources/practice").listFiles()
 
   def filesMatching(matcher: String => Boolean): Array[File] = {
-    listFiles.filter{
-      file => matcher(file.getName)
-    }
+    /**
+     * strategy 1
+     */
+    //listFiles.filter{
+      //file => matcher(file.getName)
+    //}
+    /**
+     * strategy 2
+     */
+    for (file <- listFiles if matcher(file.getName)) yield file
   }
 
   def endsWith(query: String): Array[File] = {
-    filesMatching(_.endsWith(query));
+    filesMatching(_.endsWith(query))
     //listFiles.filter(file => file.getName.endsWith(query))
   }
 
