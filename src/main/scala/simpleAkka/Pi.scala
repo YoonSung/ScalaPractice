@@ -74,7 +74,7 @@ object Pi extends App {
     override def receive: Receive = {
       case PiApproximation(pi, duration) =>
         println("\n\tPi approximation: \t\t%s\n\tcalculation time : \t%s".format(pi, duration))
-        context.system.shutdown()
+        context.system.terminate()
     }
   }
 
