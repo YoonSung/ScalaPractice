@@ -11,5 +11,7 @@ lazy val root = (project in file(".")).
   settings(commonSettings: _*).
   settings(
     libraryDependencies += "org.scalatest" % "scalatest_2.11" % "2.2.6" % "test",
-    libraryDependencies += "com.typesafe.akka" %% "akka-actor" % "2.4.1"
+    libraryDependencies += "com.typesafe.akka" %% "akka-actor" % "2.4.1",
+    libraryDependencies += "com.typesafe.akka" %% "akka-http-core" % "2.4.3",
+    libraryDependencies += "com.typesafe.akka" %% "akka-http-experimental" % "2.4.3"
   )
