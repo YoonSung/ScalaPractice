@@ -8,7 +8,7 @@ import akka.stream.ActorMaterializer
 
 import scala.io.StdIn
 
-object WebServer {
+object WebServer1 {
   def main(args: Array[String]): Unit = {
     implicit val system = ActorSystem("my-system")
     implicit val materializer = ActorMaterializer()
