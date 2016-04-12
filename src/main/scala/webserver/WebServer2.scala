@@ -2,6 +2,7 @@ package webserver
 
 import akka.Done
 import akka.actor.ActorSystem
+import akka.http.scaladsl.Http
 import akka.http.scaladsl.model.StatusCodes
 import akka.http.scaladsl.server.Directives._
 import akka.stream.ActorMaterializer
@@ -49,5 +50,8 @@ object WebServer2 {
             }
           }
         }
+
+    println(s"Server online at http://localhost:8080")
+    Http().bindAndHandle(route, "localhost", 8080)
   }
 }
