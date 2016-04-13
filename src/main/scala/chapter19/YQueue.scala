@@ -1,21 +1,25 @@
 package chapter19
 
-class YQueue[T] (
+class YQueue[T] private (
   private val leading: List[T],
   private val trailing: List[T]
 ) {
+
+  def this() = this(Nil, Nil)
+  def this(elems: T*) = this(elems.toList, Nil)
+
   private def mirror =
       if (leading.isEmpty)
-        new YQueue(trailing.reverse, leading)
+        new YQueue[T](trailing.reverse, leading)
       else
         this
 
   def head = mirror.leading.head
   def tail = {
     val q = mirror
-    new YQueue(q.leading.tail, q.trailing)
+    new YQueue[T](q.leading.tail, q.trailing)
   }
 
-  def enqueue(x: T) = new YQueue(leading, x::trailing)
+  def enqueue(x: T) = new YQueue[T](leading, x::trailing)
   def size: Int = leading.size + trailing.size
 }

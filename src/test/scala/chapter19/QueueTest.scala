@@ -4,7 +4,7 @@ import org.scalatest.WordSpec
 
 class QueueTest extends WordSpec {
   "Queue not modified" when {
-    val queue = new YQueue(List(1, 2), List(3))
+    val queue = new YQueue[Int](1, 2, 3)
     val queue2 = queue enqueue 4
 
     "queue" should {
