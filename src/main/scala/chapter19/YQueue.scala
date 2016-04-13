@@ -5,8 +5,7 @@ class YQueue[T] private (
   private val trailing: List[T]
 ) {
 
-  def this() = this(Nil, Nil)
-  def this(elems: T*) = this(elems.toList, Nil)
+  private def this(elems: T*) = this(elems.toList, Nil)
 
   private def mirror =
       if (leading.isEmpty)
@@ -22,4 +21,8 @@ class YQueue[T] private (
 
   def enqueue(x: T) = new YQueue[T](leading, x::trailing)
   def size: Int = leading.size + trailing.size
+}
+
+object YQueue {
+  def apply[T](xs: T*) = new YQueue[T](xs.toList, Nil)
 }
