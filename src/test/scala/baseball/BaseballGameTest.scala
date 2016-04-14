@@ -35,5 +35,25 @@ class BaseballGameTest extends WordSpec {
         assert(answers.size === 3)
       }
     }
+
+    "get score" should {
+      "strike 0 ball 3" in {
+        val (strike, ball) = baseball.evaluate(List(1,2,3), List(3,1,2))
+        assert(strike === 0)
+        assert(ball === 3)
+      }
+
+      "strike 2 ball 0" in {
+        val (strike, ball) = baseball.evaluate(List(1,2,3), List(1,2,0))
+        assert(strike === 2)
+        assert(ball === 0)
+      }
+
+      "strike 1 ball 2" in {
+        val (strike, ball) = baseball.evaluate(List(1,2,3), List(1,3,2))
+        assert(strike === 1)
+        assert(ball === 2)
+      }
+    }
   }
 }
