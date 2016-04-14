@@ -20,13 +20,20 @@ class BaseballGameTest extends WordSpec {
    *
    */
 
-  "getUserInput" when {
-    val baseball = new BaseballGame
-    val size = baseball.getUserInput().size
+  val baseball = new BaseballGame
+  "baseball game" when {
+    "generateUserInput" should {
+      val userInputs = baseball.userInput
+      "returned list size must be 3" in {
+        assert(userInputs.size === 3)
+      }
+    }
 
-    "size" should {
-      assert(size === 3)
+    "generateAnswer" should {
+      val answers = baseball.answers
+      "returnd list size must be 3" in {
+        assert(answers.size === 3)
+      }
     }
   }
-
 }

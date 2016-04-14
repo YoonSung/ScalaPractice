@@ -1,7 +1,7 @@
 package baseball
 
 class BaseballGame {
-  def getUserInput(): List[Int] = {
-    List(1, 2, 3)
-  }
+  def answers(): List[Int] = List(1, 2, 3)
+
+  def userInput(): List[Int] = List(1, 2, 3)
 }
