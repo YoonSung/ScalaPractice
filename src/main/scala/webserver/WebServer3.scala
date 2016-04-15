@@ -2,12 +2,13 @@ package webserver
 
 import akka.actor.{Actor, ActorRef, ActorSystem, Props}
 import akka.http.scaladsl.Http
-import akka.http.scaladsl.model.{StatusCodes, StatusCode}
+import akka.http.scaladsl.model.{StatusCode, StatusCodes}
+import akka.http.scaladsl.server.Directives._
 import akka.pattern.ask
 import akka.stream.ActorMaterializer
 import akka.util.Timeout
-import akka.http.scaladsl.server.Directives._
 import spray.json.DefaultJsonProtocol._
+
 import scala.concurrent.duration._
 import scala.io.StdIn
 

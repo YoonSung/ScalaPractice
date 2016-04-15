@@ -1,8 +1,9 @@
 package baseball
 
-import org.scalatest.{WordSpec}
+import org.scalamock.scalatest.MockFactory
+import org.scalatest.{BeforeAndAfter, WordSpec}
 
-class BaseballGameTest extends WordSpec {
+class BaseballGameTest extends WordSpec with MockFactory with BeforeAndAfter {
   /**
    * baseball game
    *
@@ -21,18 +22,26 @@ class BaseballGameTest extends WordSpec {
    */
 
   val baseball = new BaseballGame
+  //TODO It is working weird
+  //var baseball:BaseballGame = _
+  //before {
+  //  baseball = new BaseballGame
+  //}
+
   "baseball game" when {
     "generateUserInput" should {
-      val userInputs = baseball.userInput
+      val dut = stub[BaseballGame]
+      (dut.userInput _).when().returns(List(1,2,3))
+      val userInputs = dut.userInput
       "returned list size must be 3" in {
         assert(userInputs.size === 3)
       }
     }
 
     "generateAnswer" should {
-      val answers = baseball.answers
+      val answerList = baseball.answers()
       "returnd list size must be 3" in {
-        assert(answers.size === 3)
+        assert(answerList.size === 3)
       }
     }
 
