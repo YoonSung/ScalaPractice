@@ -1,9 +1,9 @@
 package baseball
 
 import org.scalamock.scalatest.MockFactory
-import org.scalatest.{BeforeAndAfter, WordSpec}
+import org.scalatest.{Matchers, BeforeAndAfter, WordSpec}
 
-class BaseballGameTest extends WordSpec with MockFactory with BeforeAndAfter {
+class BaseballGameTest extends WordSpec with Matchers with MockFactory with BeforeAndAfter {
   /**
    * baseball game
    *
@@ -27,7 +27,7 @@ class BaseballGameTest extends WordSpec with MockFactory with BeforeAndAfter {
   //before {
   //  baseball = new BaseballGame
   //}
-  //TODO prevent assert method to kill the program.
+  //TODO prevent test failed result to killing program.
 
   "baseball game" when {
     "generateUserInput" should {
@@ -35,17 +35,18 @@ class BaseballGameTest extends WordSpec with MockFactory with BeforeAndAfter {
       (dut.userInput _).when().returns(List(1,2,3))
       val userInputs = dut.userInput
       "returned list size must be 3" in {
-        assert(userInputs.size === 3)
+        userInputs should have size 3
       }
     }
 
     "generateAnswer" should {
       val answerList = baseball.answers()
       "list size must be 3" in {
-        assert(answerList.size === 3)
+        answerList should have size 3
       }
 
       "list has no duplicated element" should {
+        //answerList.foreach(answer=> (answerList.count(_ == answer)).shouldEqual(1))
         answerList.foreach(answer=> assert(answerList.count(_ == answer) === 1))
       }
     }
@@ -53,20 +54,20 @@ class BaseballGameTest extends WordSpec with MockFactory with BeforeAndAfter {
     "get score" should {
       "strike 0 ball 3" in {
         val (strike, ball) = baseball.evaluate(List(1,2,3), List(3,1,2))
-        assert(strike === 0)
-        assert(ball === 3)
+        strike should be (0)
+        ball should be (3)
       }
 
       "strike 2 ball 0" in {
         val (strike, ball) = baseball.evaluate(List(1,2,3), List(1,2,0))
-        assert(strike === 2)
-        assert(ball === 0)
+        strike should be (2)
+        ball should be (0)
       }
 
       "strike 1 ball 2" in {
         val (strike, ball) = baseball.evaluate(List(1,2,3), List(1,3,2))
-        assert(strike === 1)
-        assert(ball === 2)
+        strike should be (1)
+        ball should be (2)
       }
     }
   }
