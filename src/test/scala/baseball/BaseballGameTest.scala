@@ -27,6 +27,7 @@ class BaseballGameTest extends WordSpec with MockFactory with BeforeAndAfter {
   //before {
   //  baseball = new BaseballGame
   //}
+  //TODO prevent assert method to kill the program.
 
   "baseball game" when {
     "generateUserInput" should {
@@ -40,8 +41,12 @@ class BaseballGameTest extends WordSpec with MockFactory with BeforeAndAfter {
 
     "generateAnswer" should {
       val answerList = baseball.answers()
-      "returnd list size must be 3" in {
+      "list size must be 3" in {
         assert(answerList.size === 3)
+      }
+
+      "list has no duplicated element" should {
+        answerList.foreach(answer=> assert(answerList.count(_ == answer) === 1))
       }
     }
 

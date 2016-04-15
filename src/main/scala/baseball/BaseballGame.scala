@@ -18,7 +18,7 @@ class BaseballGame {
     (strike, ball)
   }
 
-  def answers(): List[Int] = List(1, 2, 3)
+  def answers(): List[Int] = List(1, 2, 2)
 
   def parseToList(string: String): List[Int] = string.split(",").map(_.trim).map(_.toInt).toList
 
