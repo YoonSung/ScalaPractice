@@ -53,3 +53,7 @@ class BaseballGame {
     }
   }
 }
+
+object BaseballGame {
+  def apply() = new BaseballGame
+}

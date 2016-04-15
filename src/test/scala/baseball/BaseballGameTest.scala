@@ -21,7 +21,7 @@ class BaseballGameTest extends WordSpec with Matchers with MockFactory with Befo
    *
    */
 
-  val baseball = new BaseballGame
+  val baseball = BaseballGame()
   //TODO It is working weird
   //var baseball:BaseballGame = _
   //before {
